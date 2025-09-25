@@ -1,3 +1,8 @@
+name: Build and Test
+
+on:
+  workflow_dispatch:   # 👈 This allows manual trigger from GitHub UI
+
 jobs:
   build:
     runs-on: ubuntu-latest

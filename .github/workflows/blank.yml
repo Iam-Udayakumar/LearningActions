@@ -1,21 +1,25 @@
-name: Build and Test
+name: Practice Workflow
 
 on:
-  workflow_dispatch:   # 👈 This allows manual trigger from GitHub UI
+  workflow_dispatch:   # Manual trigger only
 
 jobs:
-  build:
+  practice:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Verify Python version
+        run: python --version
 
-      - name: Run tests
-        run: pytest
+      - name: Run a hello world script
+        run: |
+          echo "print('Hello from GitHub Actions!')" > hello.py
+          python hello.py
